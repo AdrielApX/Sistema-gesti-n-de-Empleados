@@ -4,14 +4,11 @@ def es_numero(valor):
     return valor.isdigit()
 
 def es_texto(valor):
-    return valor.isalpha()
+    return re.fullmatch(r'[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+', valor) is not None
 
 def es_decimal(valor):
-    try:
-        float(valor)
-        return True
-    except ValueError:
-        return False
+    return re.fullmatch(r'\d+(\.\d{1,2})?', valor) is not None
+
 
 def registrar_empleado(servicio):
     while True:
@@ -45,4 +42,3 @@ def registrar_empleado(servicio):
     print("Empleado registrado exitosamente.")
 
 
-    
