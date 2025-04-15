@@ -24,27 +24,33 @@ class Interfaz:
             else:
                 print("Opción inválida. Intente nuevamente.")
 
-    def registrar_empleado(self):
-        id = input("Ingrese el ID del empleado: ")
-        nombre = input("Ingrese el nombre del empleado: ")
-        puesto = input("Ingrese el puesto del empleado: ")
-        salario = input("Ingrese el salario del empleado: ")
-        if self.servicio.crear_empleado(id, nombre, puesto, salario):
-            print("Empleado registrado exitosamente.")
-        else:
-            print("Error: El ID ya existe.")
+    def registrar_empleado(servicio):
+        while True:
+            id_empleado = input("Ingrese el ID del empleado (solo números): ")
+            if not es_numero(id_empleado):
+                print("ID inválido. Solo se permiten números enteros.")
+                continue
 
-    def listar_empleados(self):
-        empleados = self.servicio.listar_empleados()
-        if empleados:
-            for empleado in empleados:
-                print(empleado)
-        else:
-            print("No hay empleados registrados.")
+            nombre = input("Ingrese el nombre del empleado (solo letras y espacios): ")
+            if not es_texto(nombre):
+                print("Nombre inválido. Solo se permiten letras y espacios.")
+                continue
 
-    def eliminar_empleado(self):
-        id = input("Ingrese el ID del empleado a eliminar: ")
-        if self.servicio.eliminar_empleado(id):
-            print("Empleado eliminado exitosamente.")
-        else:
-            print("Error: El empleado no existe.")
+            puesto = input("Ingrese el puesto del empleado (solo letras y espacios): ")
+            if not es_texto(puesto):
+                print("Puesto inválido. Solo se permiten letras y espacios.")
+                continue
+
+            salario = input("Ingrese el salario del empleado (solo números, puede incluir decimales): ")
+            if not es_decimal(salario):
+                print("Salario inválido. Debe ser un número válido (ej: 3000 o 2500.50).")
+                continue
+
+            break
+        servicio.registrar_empleado(
+        int(id_empleado),
+        nombre,
+        puesto,
+        float(salario)
+        )
+        print("Empleado registrado exitosamente.")
