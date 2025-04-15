@@ -1,4 +1,5 @@
 from servicio.empleado_service import EmpleadoService
+from utils.validaciones import es_numero, es_texto, es_decimal
 
 class Interfaz:
     def __init__(self):
