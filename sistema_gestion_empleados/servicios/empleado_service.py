@@ -6,15 +6,12 @@ class EmpleadoService:
         self.dao = EmpleadoDAO()
 
     def crear_empleado(self, id, nombre, puesto, salario):
-        # Validación: ID debe ser string no vacío, sin solo espacios
         if not isinstance(id, str) or not id.strip():
             raise ValueError("El ID debe ser un texto no vacío.")
 
-        # Validación: ID duplicado
         if self.dao.buscar_por_id(id):
             raise ValueError("Ya existe un empleado con ese ID.")
 
-        # Validación: salario debe ser positivo
         if not isinstance(salario, (int, float)) or salario <= 0:
             raise ValueError("El salario debe ser un número positivo.")
 

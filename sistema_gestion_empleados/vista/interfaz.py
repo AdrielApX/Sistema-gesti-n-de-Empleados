@@ -1,4 +1,4 @@
-from servicio.empleado_service import EmpleadoService
+from servicios.empleado_service import EmpleadoService
 
 class Interfaz:
     def __init__(self):
