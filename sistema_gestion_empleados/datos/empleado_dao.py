@@ -41,3 +41,4 @@ class EmpleadoDAO:
             self.guardar_en_archivo()
             return True
         return False
+

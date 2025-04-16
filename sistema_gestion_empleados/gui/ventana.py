@@ -79,3 +79,4 @@ class VentanaPrincipal:
         self.nombre_var.set("")
         self.puesto_var.set("")
         self.salario_var.set("")
+

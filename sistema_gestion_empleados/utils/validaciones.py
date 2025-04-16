@@ -41,4 +41,3 @@ def registrar_empleado(servicio):
     )
     print("Empleado registrado exitosamente.")
 
-

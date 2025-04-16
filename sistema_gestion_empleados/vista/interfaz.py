@@ -51,3 +51,4 @@ class Interfaz:
             print("Empleado eliminado exitosamente.")
         except ValueError as e:
             print(f"Error: {e}")
+

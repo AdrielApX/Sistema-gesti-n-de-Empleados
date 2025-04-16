@@ -19,3 +19,4 @@ class Empleado:
     @staticmethod
     def from_dict(data):
         return Empleado(data["id"], data["nombre"], data["puesto"], data["salario"])
+

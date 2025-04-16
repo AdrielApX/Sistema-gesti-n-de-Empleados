@@ -24,3 +24,4 @@ class EmpleadoService:
     def eliminar_empleado(self, id):
         if not self.dao.eliminar(id):
             raise ValueError("No se encontró el empleado con ese ID.")
+
