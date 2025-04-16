@@ -26,7 +26,7 @@ class EmpleadoDAO:
         self.guardar_en_archivo()
 
     def listar(self):
-        return self.empleados
+        return sorted(self.empleados, key=lambda emp: int(emp.id))
 
     def buscar_por_id(self, id):
         for emp in self.empleados:

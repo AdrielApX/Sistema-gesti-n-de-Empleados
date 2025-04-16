@@ -10,5 +10,23 @@
         "nombre": "Pedro Manuel",
         "puesto": "Conductor Priv",
         "salario": 30000.0
+    },
+    {
+        "id": "03",
+        "nombre": "Maria Quezada",
+        "puesto": "Vice CEO",
+        "salario": 150000.0
+    },
+    {
+        "id": "02",
+        "nombre": "Marta Perez",
+        "puesto": "RRHH",
+        "salario": 50000.0
+    },
+    {
+        "id": "000",
+        "nombre": "ApX",
+        "puesto": "Administrador Software",
+        "salario": 1.0
     }
 ]
