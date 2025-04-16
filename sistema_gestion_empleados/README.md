@@ -12,7 +12,7 @@ Este proyecto es una aplicación sencilla para gestionar empleados. Permite regi
 git clone https://github.com/AdrielApX/Sistema-gesti-n-de-Empleados.git
 cd sistema_gestion_empleados
 
-###2. Instalar las dependencias en Windows/Mac el primer comando, si es Linux ejecuta el segundo comando
+Instalar las dependencias en Windows/Mac el primer comando, si es Linux ejecuta el segundo comando
 
 pip install -r requirements.txt
 

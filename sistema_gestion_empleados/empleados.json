@@ -4,5 +4,11 @@
         "nombre": "Adriel Padilla",
         "puesto": "CEO",
         "salario": 100000.0
+    },
+    {
+        "id": "01",
+        "nombre": "Pedro Manuel",
+        "puesto": "Conductor Priv",
+        "salario": 30000.0
     }
 ]

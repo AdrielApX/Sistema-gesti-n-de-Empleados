@@ -7,51 +7,61 @@ class VentanaPrincipal:
         self.servicio = EmpleadoService()
         self.root = root
         self.root.title("Gestión de Empleados")
+        self.root.configure(bg="#dcdcdc")  # Fondo gris claro
+        self.root.geometry("800x400")
+        self.root.minsize(600, 300)
 
-        # Campos de entrada
-        tk.Label(root, text="ID:").grid(row=0, column=0)
-        self.entry_id = tk.Entry(root)
-        self.entry_id.grid(row=0, column=1)
+        # Variables de entrada
+        self.id_var = tk.StringVar()
+        self.nombre_var = tk.StringVar()
+        self.puesto_var = tk.StringVar()
+        self.salario_var = tk.StringVar()
 
-        tk.Label(root, text="Nombre:").grid(row=1, column=0)
-        self.entry_nombre = tk.Entry(root)
-        self.entry_nombre.grid(row=1, column=1)
+        # Crear contenedor centrado
+        self.frame = tk.Frame(self.root, bg="#dcdcdc")
+        self.frame.pack(pady=20)
 
-        tk.Label(root, text="Puesto:").grid(row=2, column=0)
-        self.entry_puesto = tk.Entry(root)
-        self.entry_puesto.grid(row=2, column=1)
-
-        tk.Label(root, text="Salario:").grid(row=3, column=0)
-        self.entry_salario = tk.Entry(root)
-        self.entry_salario.grid(row=3, column=1)
+        # Etiquetas y entradas
+        self._crear_label_entry("ID:", self.id_var, 0)
+        self._crear_label_entry("Nombre:", self.nombre_var, 1)
+        self._crear_label_entry("Puesto:", self.puesto_var, 2)
+        self._crear_label_entry("Salario:", self.salario_var, 3)
 
         # Botones
-        tk.Button(root, text="Registrar", command=self.registrar).grid(row=4, column=0, pady=10)
-        tk.Button(root, text="Eliminar por ID", command=self.eliminar).grid(row=4, column=1)
-        tk.Button(root, text="Listar empleados", command=self.listar).grid(row=5, column=0, columnspan=2)
+        boton_frame = tk.Frame(self.frame, bg="#dcdcdc")
+        boton_frame.grid(row=4, column=0, columnspan=2, pady=10)
 
-        # Área de resultados
-        self.text_area = tk.Text(root, height=10, width=50)
-        self.text_area.grid(row=6, column=0, columnspan=2)
+        tk.Button(boton_frame, text="Registrar", command=self.registrar, font=("Segoe UI", 10)).grid(row=0, column=0, padx=5)
+        tk.Button(boton_frame, text="Eliminar por ID", command=self.eliminar, font=("Segoe UI", 10)).grid(row=0, column=1, padx=5)
+        tk.Button(self.frame, text="Listar empleados", command=self.listar, font=("Segoe UI", 10)).grid(row=5, column=0, columnspan=2, pady=10)
+
+        # Área de texto para mostrar resultados
+        self.text_area = tk.Text(self.root, height=10, font=("Consolas", 11))
+        self.text_area.pack(expand=True, fill="both", padx=20, pady=10)
+
+    def _crear_label_entry(self, texto, variable, fila):
+        tk.Label(self.frame, text=texto, font=("Segoe UI", 11), bg="#dcdcdc").grid(row=fila, column=0, sticky="e", padx=5, pady=3)
+        tk.Entry(self.frame, textvariable=variable, font=("Segoe UI", 11), width=30).grid(row=fila, column=1, padx=5, pady=3)
 
     def registrar(self):
-        id = self.entry_id.get()
-        nombre = self.entry_nombre.get()
-        puesto = self.entry_puesto.get()
+        id = self.id_var.get()
+        nombre = self.nombre_var.get()
+        puesto = self.puesto_var.get()
+        salario = self.salario_var.get()
         try:
-            salario = float(self.entry_salario.get())
-            self.servicio.crear_empleado(id, nombre, puesto, salario)
+            salario_float = float(salario)
+            self.servicio.crear_empleado(id, nombre, puesto, salario_float)
             messagebox.showinfo("Éxito", "Empleado registrado correctamente.")
-            self.limpiar_entradas()
+            self._limpiar()
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
     def eliminar(self):
-        id = self.entry_id.get()
+        id = self.id_var.get()
         try:
             self.servicio.eliminar_empleado(id)
             messagebox.showinfo("Éxito", "Empleado eliminado.")
-            self.limpiar_entradas()
+            self._limpiar()
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
@@ -64,8 +74,8 @@ class VentanaPrincipal:
         else:
             self.text_area.insert(tk.END, "No hay empleados registrados.")
 
-    def limpiar_entradas(self):
-        self.entry_id.delete(0, tk.END)
-        self.entry_nombre.delete(0, tk.END)
-        self.entry_puesto.delete(0, tk.END)
-        self.entry_salario.delete(0, tk.END)
+    def _limpiar(self):
+        self.id_var.set("")
+        self.nombre_var.set("")
+        self.puesto_var.set("")
+        self.salario_var.set("")
