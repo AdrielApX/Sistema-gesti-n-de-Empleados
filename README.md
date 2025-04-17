@@ -20,7 +20,12 @@ sudo apt install python3-tk
 ```
 ### 2. Como ejecutar?
 Desde el sistema_gestion_empleados\sistema_gestion_empleados :
+
 ![alt text](image.png)
 ```bash
 py -m gui.main_gui
 ```
+
+## Autor
+
+Adriel Padilla 2022-2161
