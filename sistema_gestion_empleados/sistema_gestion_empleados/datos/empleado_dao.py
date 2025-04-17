@@ -27,6 +27,7 @@ class EmpleadoDAO:
 
     def listar(self):
         return sorted(self.empleados, key=lambda emp: int(emp.id))
+        ##return sorted(self.empleados, key=lambda emp: int(emp.id.lstrip("0") or "0"))
 
     def buscar_por_id(self, id):
         for emp in self.empleados:
@@ -38,6 +39,16 @@ class EmpleadoDAO:
         emp = self.buscar_por_id(id)
         if emp:
             self.empleados.remove(emp)
+            self.guardar_en_archivo()
+            return True
+        return False
+
+    def actualizar(self, id, nuevo_nombre, nuevo_puesto, nuevo_salario):
+        empleado = self.buscar_por_id(id)
+        if empleado:
+            empleado.nombre = nuevo_nombre
+            empleado.puesto = nuevo_puesto
+            empleado.salario = nuevo_salario
             self.guardar_en_archivo()
             return True
         return False

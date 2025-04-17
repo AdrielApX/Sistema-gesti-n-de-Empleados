@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import messagebox
 from servicios.empleado_service import EmpleadoService
+from datos.empleado_dao import EmpleadoDAO
 
 class VentanaPrincipal:
     def __init__(self, root):
-        self.servicio = EmpleadoService()
+        self.servicio = EmpleadoService(EmpleadoDAO())
+        #self.servicio = EmpleadoService()
         self.root = root
         self.root.title("Gestión de Empleados")
         self.root.configure(bg="#dcdcdc")  # Fondo gris claro
@@ -34,6 +36,7 @@ class VentanaPrincipal:
         tk.Button(boton_frame, text="Registrar", command=self.registrar, font=("Segoe UI", 10)).grid(row=0, column=0, padx=5)
         tk.Button(boton_frame, text="Eliminar por ID", command=self.eliminar, font=("Segoe UI", 10)).grid(row=0, column=1, padx=5)
         tk.Button(self.frame, text="Listar empleados", command=self.listar, font=("Segoe UI", 10)).grid(row=5, column=0, columnspan=2, pady=10)
+        tk.Button(boton_frame, text="Editar", command=self.editar, font=("Segoe UI", 10)).grid(row=0, column=2, padx=5)
 
         # Área de texto para mostrar resultados
         self.text_area = tk.Text(self.root, height=10, font=("Consolas", 11))
@@ -50,11 +53,16 @@ class VentanaPrincipal:
         salario = self.salario_var.get()
         try:
             salario_float = float(salario)
-            self.servicio.crear_empleado(id, nombre, puesto, salario_float)
-            messagebox.showinfo("Éxito", "Empleado registrado correctamente.")
+            if self.servicio.buscar_empleado(id):
+                self.servicio.editar_empleado(id, nombre, puesto, salario_float)
+                messagebox.showinfo("Actualizado", f"Empleado con ID {id} actualizado correctamente.")
+            else:
+                self.servicio.crear_empleado(id, nombre, puesto, salario_float)
+                messagebox.showinfo("Registrado", "Empleado nuevo registrado correctamente.")
             self._limpiar()
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
 
     def eliminar(self):
         id = self.id_var.get()
@@ -79,3 +87,14 @@ class VentanaPrincipal:
         self.nombre_var.set("")
         self.puesto_var.set("")
         self.salario_var.set("")
+
+    def editar(self):
+        id = self.id_var.get()
+        empleado = self.servicio.buscar_empleado(id)
+        if empleado:
+            self.nombre_var.set(empleado.nombre)
+            self.puesto_var.set(empleado.puesto)
+            self.salario_var.set(str(empleado.salario))
+            messagebox.showinfo("Edición", f"Datos del empleado con ID {id} cargados para editar.")
+        else:
+            messagebox.showerror("Error", f"No se encontró el empleado con ID {id}.")

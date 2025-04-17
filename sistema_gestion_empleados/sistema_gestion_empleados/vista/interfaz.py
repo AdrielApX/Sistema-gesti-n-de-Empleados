@@ -20,6 +20,8 @@ class Interfaz:
             elif opcion == "3":
                 self.eliminar_empleado()
             elif opcion == "4":
+                self.editar_empleado()
+            elif opcion == "5":
                 print("Saliendo del sistema...")
                 break
             else:
@@ -51,3 +53,16 @@ class Interfaz:
             print("Empleado eliminado exitosamente.")
         except ValueError as e:
             print(f"Error: {e}")
+
+    def editar_empleado(self):
+        print("\n--- Editar Empleado ---")
+        id = input("ID del empleado a editar: ")
+        nombre = input("Nuevo nombre: ")
+        puesto = input("Nuevo puesto: ")
+        salario = input("Nuevo salario: ")
+        try:
+            self.servicio.editar_empleado(id, nombre, puesto, float(salario))
+            print("Empleado actualizado correctamente.")
+        except Exception as e:
+            print("Error:", e)
+

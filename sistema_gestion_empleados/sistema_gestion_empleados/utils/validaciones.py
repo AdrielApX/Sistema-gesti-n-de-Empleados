@@ -41,4 +41,12 @@ def registrar_empleado(servicio):
     )
     print("Empleado registrado exitosamente.")
 
-
+class Validaciones:
+    def validar_campos(self, id, nombre, puesto, salario):
+        return all([id.strip(), puesto.strip(), str(salario).strip()])
+    
+    def salario_valido(self, salario):
+        try:
+            return float(salario) > 0
+        except ValueError:
+            return False

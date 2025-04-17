@@ -17,3 +17,10 @@ Instalar las dependencias en Windows/Mac el primer comando, si es Linux ejecuta 
 pip install -r requirements.txt
 
 sudo apt install python3-tk
+```
+### 2. Como ejecutar?
+Desde el sistema_gestion_empleados\sistema_gestion_empleados :
+![alt text](image.png)
+```bash
+py -m gui.main_gui
+```
