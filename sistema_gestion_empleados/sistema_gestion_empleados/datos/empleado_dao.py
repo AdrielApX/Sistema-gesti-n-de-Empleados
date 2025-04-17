@@ -27,6 +27,7 @@ class EmpleadoDAO:
 
     def listar(self):
         return sorted(self.empleados, key=lambda emp: int(emp.id))
+        ##return sorted(self.empleados, key=lambda emp: int(emp.id.lstrip("0") or "0"))
 
     def buscar_por_id(self, id):
         for emp in self.empleados:

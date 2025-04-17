@@ -28,5 +28,17 @@
         "nombre": "ApX",
         "puesto": "Administrador Software",
         "salario": 10.0
+    },
+    {
+        "id": "04",
+        "nombre": "Seudimar Blanco",
+        "puesto": "Gerente General",
+        "salario": 99000.0
+    },
+    {
+        "id": "07",
+        "nombre": "Pepe",
+        "puesto": "Azarar",
+        "salario": 3.0
     }
 ]
