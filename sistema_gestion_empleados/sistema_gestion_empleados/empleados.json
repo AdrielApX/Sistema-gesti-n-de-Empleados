@@ -1,0 +1,32 @@
+[
+    {
+        "id": "00",
+        "nombre": "Adriel Padilla",
+        "puesto": "CEO",
+        "salario": 100000.0
+    },
+    {
+        "id": "01",
+        "nombre": "Pedro Manuel",
+        "puesto": "Conductor Priv",
+        "salario": 30000.0
+    },
+    {
+        "id": "03",
+        "nombre": "Maria Quezada",
+        "puesto": "Vice CEO",
+        "salario": 150000.0
+    },
+    {
+        "id": "02",
+        "nombre": "Marta Perez",
+        "puesto": "RRHH",
+        "salario": 50000.0
+    },
+    {
+        "id": "000",
+        "nombre": "ApX",
+        "puesto": "Administrador Software",
+        "salario": 10.0
+    }
+]

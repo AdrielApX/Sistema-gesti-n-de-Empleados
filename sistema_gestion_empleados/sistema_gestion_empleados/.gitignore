@@ -1,0 +1,29 @@
+# Archivos de compilación
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de entorno virtual
+env/
+venv/
+ENV/
+
+# Configuración del editors
+.vscode/
+*.code-workspace
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+
+# Archivos de testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datos sensibles o temporales
+*.env
+*.db
+empleados.json
