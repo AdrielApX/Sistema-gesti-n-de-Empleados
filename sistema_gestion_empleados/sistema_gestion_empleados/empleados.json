@@ -36,15 +36,9 @@
         "salario": 99000.0
     },
     {
-        "id": "07+",
-        "nombre": "Jose Perez",
-        "puesto": "Seguridad",
-        "salario": 20000.0
-    },
-    {
         "id": "07",
-        "nombre": "Jose Puello",
-        "puesto": "Seguridad",
-        "salario": 20000.0
+        "nombre": "Pepe",
+        "puesto": "Azarar",
+        "salario": 3.0
     }
 ]
